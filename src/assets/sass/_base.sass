@@ -1,0 +1,53 @@
+.disable-scroll
+  @include media('show-mobile-menu')
+    overflow: hidden
+
+.container
+  padding: 0 2.4rem
+  margin: 0 auto
+  max-width: 119rem
+  @include media('medium')
+    padding: 0 4rem
+  
+// Reset
+html
+  box-sizing: border-box
+  font-size: 62.5%
+  height: 100%
+
+*, *::before, *::after
+  box-sizing: border-box
+
+body
+  margin: 0
+  overflow-x: hidden
+
+ul
+  list-style-type: none
+  margin: 0
+  padding: 0
+
+a
+  color: inherit
+  text-decoration: none
+
+input, textarea
+  background: none
+  border: none
+  display: block
+  margin: 0
+  padding: 0
+  outline: none
+
+textarea
+  resize: none
+
+label
+  display: block
+
+button
+  background: none
+  border: none
+  cursor: pointer
+  outline: none
+  padding: 0

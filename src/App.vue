@@ -1,30 +1,36 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <Header />
+  <router-view v-slot="{ Component }">
+    <transition @before-enter="scrollToTop" name="fade" mode="out-in">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
+  <Footer />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Header from '@/components/layout/Header.vue'
+import Footer from '@/components/layout/Footer.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  components: {
+    Header,
+    Footer
+  },
+  methods: {
+    scrollToTop(){
+      document.getElementById('app').scrollIntoView()
     }
   }
 }
+</script>
+
+<style lang="sass">
+.fade-enter-active,
+.fade-leave-active
+  transition: opacity 0.4s ease
+
+.fade-enter-from,
+.fade-leave-to
+  opacity: 0
 </style>
